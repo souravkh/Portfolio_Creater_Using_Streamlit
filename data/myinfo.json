@@ -1,0 +1,24 @@
+{
+  "profile": {
+    "name": "Your Name",
+    "title": "Software Developer",
+    "short_summary": "Passionate software developer experienced in C#, ASP.NET Core, Revit automation, WPF, and cloud-based solutions. Focused on building scalable tools, automation systems, and modern developer experiences.",
+    "profile_image": "./Images/profile.svg",
+    "resume": {
+      "file_name": "Resume.pdf",
+      "path": "./data/Resume.pdf"
+    },
+    "contact": {
+      "email": "souravkhatri1996@example.com",
+      "mailto": "mailto:souravkhatri1996@example.com",
+      "linkedin": {
+        "username": "your-linkedin-id",
+        "url": "https://www.linkedin.com/in/your-linkedin-id/"
+      },
+      "github": {
+        "username": "souravkh",
+        "url": "https://github.com/souravkh"
+      }
+    }
+  }
+}

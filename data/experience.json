@@ -1,0 +1,111 @@
+[
+  {
+    "company": "Current company",
+    "location": "location",
+    "role": "Software Developer",
+    "duration": {
+      "start": "2022-04",
+      "end": "2026-05"
+    },
+    "highlights": [
+      {
+        "title": "Current company product plugin",
+        "description": "Designed and worked on US based client for Revit suite including hangers, spooling, content manager, renumbering, autoscaling, and fittings flip.",
+        "impact": "Enabled 60x faster spooling and reduced drafting errors."
+      },
+      {
+        "title": "Backend Development",
+        "description": "Built backend using ASP.NET Core, REST APIs, and Swagger.",
+        "impact": "Improved automation and application stability."
+      },
+      {
+        "title": "Azure Blob Storage",
+        "description": "Integrated Azure Blob Storage for seamless content synchronization and management."
+      },
+      {
+        "title": "Licensing System",
+        "description": "Implemented SQL-based licensing using Entity Framework.",
+        "impact": "Enabled secure access control."
+      },
+      {
+        "title": "Analytics Integration",
+        "description": "Integrated Mixpanel analytics in C#.",
+        "impact": "Enabled data-driven decision making."
+      },
+      {
+        "title": "Automation Tool",
+        "description": "Developed a C# automation tool using HTML parsing and Selenium WebDriver.",
+        "impact": "Automated large-scale content downloads and data extraction."
+      },
+      {
+        "title": "WinForms to WPF Migration",
+        "description": "Migrated WinForms applications to WPF using MVVM architecture.",
+        "impact": "Improved tool stability by 95%."
+      },
+      {
+        "title": "CI/CD Automation",
+        "description": "Set up CI/CD pipelines using Jenkins.",
+        "impact": "Enabled Revit build automation and versioning."
+      },
+      {
+        "title": "Cross-Version Compatibility",
+        "description": "Maintained compatibility across Revit 2021–2026 and migrated .NET Framework 4.8 to .NET Core 8.",
+        "impact": "Reduced installer size from 1.5 GB to 75 MB."
+      },
+      {
+        "title": "Code Security",
+        "description": "Secured add-ins using ConfuserEx for code obfuscation and IP protection."
+      },
+      {
+        "title": "Interactive Tools",
+        "description": "Designed semi-automated interactive tools such as hanger tools.",
+        "impact": "Improved overall user experience."
+      }
+    ],
+    "skills": [
+      "C#",
+      "ASP.NET Core",
+      "REST APIs",
+      "Swagger",
+      "Azure Blob Storage",
+      "Entity Framework",
+      "Mixpanel",
+      "Selenium WebDriver",
+      "WPF",
+      "MVVM",
+      "Jenkins",
+      ".NET Core 8",
+      "ConfuserEx"
+    ]
+  },
+  {
+    "company": "Previous company",
+    "location": "location",
+    "role": "Title",
+    "duration": {
+      "start": "start",
+      "end": "end"
+    },
+    "highlights": [
+      {
+        "title": "Something",
+        "description": "description",
+        "impact": "Impact"
+      },
+      {
+        "title": "Something",
+        "description": "Created SOPs and PFMEAs for manufacturing processes."
+      },
+      {
+        "title": "Layout Improvement",
+        "description": "Improved plant layouts using AutoCAD."
+      }
+    ],
+    "skills": [
+      "AutoCAD",
+      "Process Optimization",
+      "PFMEA",
+      "SOP"
+    ]
+  }
+]
