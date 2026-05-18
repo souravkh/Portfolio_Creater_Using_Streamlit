@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+import os
 from utils.jsonimport import JsonImporter
 
 # -----------------------------
@@ -14,21 +15,32 @@ st.set_page_config(
 
 data = JsonImporter.load_data_from_file("./data/myinfo.json")
 
-# Encode the PDF file into base64 so Streamlit serves it directly in the browser
-resume_path = data.get("profile", {}).get("resume", {}).get("path", "")
+# Serve the PDF file statically from Streamlit
 resume_file_name = data.get("profile", {}).get("resume", {}).get("file_name", "Resume.pdf")
+static_resume_path = os.path.join("static", resume_file_name)
 
-try:
-    with open(resume_path, "rb") as f:
-        pdf_data = f.read()
-    b64_pdf = base64.b64encode(pdf_data).decode("utf-8")
-    resume_href = f"data:application/pdf;base64,{b64_pdf}"
-    resume_download_attr = f'download="{resume_file_name}"'
-except Exception:
-    # Fallback if the file isn't found
-    resume_href = "#"
-    resume_download_attr = ""
-
+if os.path.exists(static_resume_path):
+    resume_url = f"app/static/{resume_file_name}"
+    resume_tag = f'''<a href="{resume_url}" download="{resume_file_name}" target="_blank" style="text-decoration: none;">
+        <span style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #6366F1, #A855F7);
+            color: #FFFFFF;
+            border-radius: 25px;
+            padding: 9px 22px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 0 3px 12px rgba(99, 102, 241, 0.25);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            cursor: pointer;
+        ">📄 Download Resume</span>
+    </a>'''
+else:
+    resume_tag = "<span style='color:#94A3B8; font-size:0.85rem; display:inline-flex; align-items:center;'>Resume not available</span>"
 # -----------------------------
 # Global styles + Google Fonts + Responsive CSS
 # -----------------------------
@@ -224,26 +236,13 @@ with col2:
                 white-space: nowrap;
             ">✉️ Email Me</span>
         </a>
+        {resume_tag}
 
-        <!-- Resume Download -->
-        <a href="{resume_href}" {resume_download_attr} style="text-decoration: none;">
-            <span style="
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                background: linear-gradient(135deg, #6366F1, #A855F7);
-                color: #FFFFFF;
-                border-radius: 25px;
-                padding: 9px 22px;
-                font-size: 0.88rem;
-                font-weight: 600;
-                font-family: 'Roboto', sans-serif;
-                box-shadow: 0 3px 12px rgba(99, 102, 241, 0.25);
-                letter-spacing: 0.3px;
-                white-space: nowrap;
-            ">📄 Download Resume</span>
-        </a>
+        
     </div>
     """)
+
+# ── Styled Download Button ──
+   
 
 st.write("")

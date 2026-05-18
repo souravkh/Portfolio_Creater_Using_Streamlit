@@ -9,8 +9,8 @@
       "path": "./data/Resume.pdf"
     },
     "contact": {
-      "email": "souravkhatri1996@example.com",
-      "mailto": "mailto:souravkhatri1996@example.com",
+      "email": "someone@example.com",
+      "mailto": "mailto:someone@example.com",
       "linkedin": {
         "username": "your-linkedin-id",
         "url": "https://www.linkedin.com/in/your-linkedin-id/"

@@ -26,7 +26,7 @@ st.logo("Images/bolt.svg")
 
 # 1. Custom content at the VERY top
 st.sidebar.title("Template - Portfolio")
-st.sidebar.markdown("Made with by [Sourav]()")
+st.sidebar.markdown("Made with [Sourav](https://github.com/souravkh)")
 st.sidebar.divider()
 
 # 2. Rebuild the navigation menu manually
