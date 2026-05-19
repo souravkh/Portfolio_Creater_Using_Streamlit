@@ -1,7 +1,5 @@
 import streamlit as st
-from utils.jsonimport import JsonImporter;
-
-
+from utils.jsonimport import JsonImporter
 
 # -----------------------------
 # Streamlit page config
@@ -18,7 +16,7 @@ st.set_page_config(
 st.markdown("""
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Playwrite+NO:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <style>
         /* Apply Roboto globally */
@@ -28,13 +26,13 @@ st.markdown("""
 
         /* Page background */
         [data-testid="stAppViewContainer"] {
-            background: linear-gradient(135deg, #F0F4FF 0%, #FAF5FF 100%);
+            background-color: #FFFFFF;
         }
 
         /* Sidebar */
         [data-testid="stSidebar"] {
-            background-color: #FFFFFF;
-            border-right: 1px solid #E5E7EB;
+            background-color: #FAFAFA;
+            border-right: 1px solid #E4E4E7;
         }
 
         [data-testid="block-container"] {
@@ -51,24 +49,21 @@ st.markdown("""
 
 
 # -----------------------------
-# Page Title  (Playwrite NO font)
+# Page Title  (Roboto font with Orange Accent)
 # -----------------------------
 st.markdown("""
-<div style="text-align: center; margin-bottom: 2rem;">
+<div style="text-align: center; margin-bottom: 2.5rem;">
     <h1 style="
-        font-family: 'Playwrite NO', cursive;
+        font-family: 'Roboto', sans-serif;
         font-size: 2.8rem;
-        font-weight: 400;
-        background: linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-weight: 800;
+        color: #09090B;
         margin-bottom: 6px;
-        letter-spacing: 1px;
+        letter-spacing: -0.8px;
     ">💼 Experience Timeline</h1>
     <p style="
         font-family: 'Roboto', sans-serif;
-        color: #94A3B8;
+        color: #71717A;
         font-size: 1rem;
         font-weight: 300;
         letter-spacing: 0.5px;
@@ -76,7 +71,7 @@ st.markdown("""
     <div style="
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, #6366F1, #A855F7);
+        background: #FF5F1F;
         border-radius: 2px;
         margin: 12px auto 0;
     "></div>
@@ -98,17 +93,17 @@ for exp in data:
         highlights_html += f"""
             <li style="
                 margin-bottom: 10px;
-                color: #475569;
+                color: #27272A;
                 line-height: 1.75;
                 font-family: 'Roboto', sans-serif;
                 font-size: 0.93rem;
             ">
                 <span style="
                     font-family: 'Google Sans Code', monospace;
-                    color: #7C3AED;
+                    color: #EA580C;
                     font-weight: 600;
                 ">{h['title']}</span>
-                <span style="color: #CBD5E1;"> &mdash; </span>
+                <span style="color: #FFEDD5;"> &mdash; </span>
                 {h['description']}
             </li>
         """
@@ -119,49 +114,51 @@ for exp in data:
         skills_badges += f"""
             <span style="
                 display: inline-block;
-                background: linear-gradient(135deg, #EDE9FE, #FAE8FF);
-                color: #6D28D9;
-                border: 1px solid #DDD6FE;
-                border-radius: 20px;
+                background: #F4F4F5;
+                color: #18181B;
+                border: 1px solid #E4E4E7;
+                border-radius: 6px;
                 padding: 4px 14px;
                 margin: 4px 5px 4px 0;
                 font-size: 0.80rem;
                 font-weight: 500;
                 font-family: 'Roboto', sans-serif;
-                letter-spacing: 0.3px;
+                letter-spacing: 0.2px;
             ">{skill}</span>
         """
 
     st.html(f"""
     <div style="
         background: #FFFFFF;
-        border: 1px solid #EDE9FE;
-        border-radius: 16px;
+        border: 1px solid #E4E4E7;
+        border-radius: 8px;
         margin-bottom: 24px;
-        box-shadow: 0 4px 24px rgba(99, 102, 241, 0.10);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         overflow: hidden;
     ">
-        <!-- Colored top banner -->
+        <!-- Minimalist top banner -->
         <div style="
-            background: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
+            background: #18181B;
             padding: 18px 28px;
         ">
             <h2 style="
-                margin: 0 0 4px 0;
+                margin: 0 0 6px 0;
                 color: #FFFFFF;
                 font-size: 1.4rem;
                 font-weight: 700;
                 font-family: 'Roboto', sans-serif;
+                letter-spacing: -0.3px;
             ">🏢 {exp['company']}</h2>
             <span style="
                 display: inline-block;
-                background: rgba(255,255,255,0.2);
-                color: #EDE9FE;
-                border-radius: 20px;
-                padding: 2px 14px;
+                background: #FFF7ED;
+                color: #EA580C;
+                border: 1px solid #FFEDD5;
+                border-radius: 6px;
+                padding: 2px 12px;
                 font-size: 0.85rem;
                 font-family: 'Roboto', sans-serif;
-                font-weight: 400;
+                font-weight: 500;
             ">{exp['role']}</span>
         </div>
 
@@ -170,29 +167,29 @@ for exp in data:
 
             <!-- Location & Duration -->
             <p style="
-                color: #94A3B8;
+                color: #71717A;
                 font-size: 0.88rem;
                 margin-bottom: 18px;
                 font-family: 'Roboto', sans-serif;
             ">
-                📍 <span style="color: #64748B;">{exp['location']}</span>
+                📍 <span style="color: #475569;">{exp['location']}</span>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                🗓️ <b style="color: #7C3AED;">{exp['duration']['start']}</b>
+                🗓️ <b style="color: #FF5F1F;">{exp['duration']['start']}</b>
                 &nbsp;→&nbsp;
-                <b style="color: #7C3AED;">{exp['duration']['end']}</b>
+                <b style="color: #FF5F1F;">{exp['duration']['end']}</b>
             </p>
 
             <!-- Highlights -->
             <div style="
-                background: #FAFBFF;
-                border: 1px solid #EDE9FE;
-                border-left: 3px solid #A855F7;
-                border-radius: 10px;
+                background: #FAFAFA;
+                border: 1px solid #E4E4E7;
+                border-left: 3px solid #FF5F1F;
+                border-radius: 6px;
                 padding: 14px 18px 14px 20px;
                 margin-bottom: 18px;
             ">
                 <p style="
-                    color: #A855F7;
+                    color: #FF5F1F;
                     font-size: 0.72rem;
                     text-transform: uppercase;
                     letter-spacing: 1.5px;
@@ -207,7 +204,7 @@ for exp in data:
 
             <!-- Skills -->
             <p style="
-                color: #A855F7;
+                color: #FF5F1F;
                 font-size: 0.72rem;
                 text-transform: uppercase;
                 letter-spacing: 1.5px;
