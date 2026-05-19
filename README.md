@@ -210,6 +210,9 @@ st.logo("images/your_logo.svg")
 
 ---
 
+![Portfolio Demo](Demo.gif)
+
+
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request for bug fixes, new features, or improvements to the template.
