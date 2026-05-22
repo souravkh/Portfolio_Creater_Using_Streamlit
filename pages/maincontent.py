@@ -1,221 +1,297 @@
 import streamlit as st
 from utils.jsonimport import JsonImporter
 
-# -----------------------------
-# Streamlit page config
-# -----------------------------
 st.set_page_config(
     page_title="Experience",
     page_icon="👨‍💻",
     layout="wide"
 )
 
-# -----------------------------
-# Global styles + Google Fonts
-# -----------------------------
 st.markdown("""
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* Apply Roboto globally */
-        html, body, [class*="css"], [data-testid] {
-            font-family: 'Roboto', sans-serif !important;
-        }
+<style>
+html, body, [class*="css"], [data-testid] {
+    font-family: 'Inter', sans-serif !important;
+}
 
-        /* Page background */
-        [data-testid="stAppViewContainer"] {
-            background-color: #FFFFFF;
-        }
+/* ── Animated Mesh Gradient Background ── */
+[data-testid="stAppViewContainer"] {
+    background-color: #0D0D14;
+    background-image:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(120, 60, 220, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0, 200, 180, 0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 60% at 50% 90%, rgba(220, 50, 150, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 90% 70%, rgba(80, 120, 255, 0.12) 0%, transparent 50%);
+    background-attachment: fixed;
+}
 
-        /* Sidebar */
-        [data-testid="stSidebar"] {
-            background-color: #FAFAFA;
-            border-right: 1px solid #E4E4E7;
-        }
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {
+    background: rgba(13, 13, 20, 0.92) !important;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255,255,255,0.08) !important;
+}
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div,
+[data-testid="stSidebar"] label {
+    color: #A8A8B8 !important;
+}
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #E2E8F0 !important;
+}
+[data-testid="stSidebar"] a {
+    color: #C4B5FD !important;
+    text-decoration: none;
+}
+[data-testid="stSidebar"] a:hover {
+    color: #A78BFA !important;
+}
+[data-testid="stSidebar"] [aria-selected="true"] {
+    color: #C084FC !important;
+    background: rgba(168,85,247,0.12) !important;
+    border-radius: 8px;
+}
 
-        [data-testid="block-container"] {
-            background-color: transparent;
-            padding-top: 2rem;
-        }
+/* ── Block container ── */
+[data-testid="block-container"] {
+    background: transparent;
+    padding: 3rem 3rem 2rem !important;
+    max-width: 960px;
+    margin: 0 auto;
+}
 
-        /* Override Streamlit default h1 */
-        h1 {
-            font-family: 'Roboto', sans-serif !important;
-        }
-    </style>
+/* Hide only Streamlit footer branding, keep header/sidebar toggle */
+footer { visibility: hidden; }
+h1 { font-family: 'Space Grotesk', sans-serif !important; }
+
+/* ── Section label ── */
+.section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #14B8A6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1.5px;
+    background: #14B8A6;
+}
+
+/* ── Experience Card ── */
+.exp-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.exp-card:hover {
+    border-color: rgba(168,85,247,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(168,85,247,0.1);
+}
+
+.exp-card-header {
+    padding: 20px 28px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(20,184,166,0.08));
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+}
+.exp-card-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, transparent 60%);
+}
+
+.exp-company {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F1F5F9;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    position: relative;
+}
+
+.exp-role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(168,85,247,0.15);
+    border: 1px solid rgba(168,85,247,0.3);
+    color: #C084FC;
+    border-radius: 50px;
+    padding: 3px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.exp-card-body { padding: 20px 28px 24px; }
+
+.exp-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.83rem;
+    color: #64748B;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+.exp-location { color: #94A3B8; }
+.exp-dates {
+    color: #A855F7;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.exp-divider {
+    width: 4px; height: 4px;
+    background: #334155;
+    border-radius: 50%;
+}
+
+/* ── Highlights box ── */
+.highlights-box {
+    background: rgba(168,85,247,0.04);
+    border: 1px solid rgba(168,85,247,0.12);
+    border-left: 3px solid #7C3AED;
+    border-radius: 10px;
+    padding: 16px 18px 14px 20px;
+    margin-bottom: 18px;
+}
+.highlights-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #A855F7;
+    margin-bottom: 10px;
+}
+.highlight-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #94A3B8;
+}
+.highlight-title {
+    color: #14B8A6;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ── Skill badges ── */
+.skills-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #A855F7;
+    margin-bottom: 10px;
+}
+.skill-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #CBD5E1;
+    border-radius: 6px;
+    padding: 4px 12px;
+    margin: 3px 4px 3px 0;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: border-color 0.2s, color 0.2s;
+}
+.skill-badge:hover {
+    border-color: rgba(168,85,247,0.4);
+    color: #E2E8F0;
+}
+
+@media (max-width: 700px) {
+    [data-testid="block-container"] { padding: 1.5rem 1rem 2rem !important; }
+    .exp-card-header, .exp-card-body { padding-left: 18px; padding-right: 18px; }
+}
+</style>
 """, unsafe_allow_html=True)
 
 
-# -----------------------------
-# Page Title  (Roboto font with Orange Accent)
-# -----------------------------
+# ─── Page Header ───────────────────────────────────
 st.markdown("""
-<div style="text-align: center; margin-bottom: 2.5rem;">
+<div style="margin-bottom: 2.5rem;">
+    <div class="section-eyebrow">Career</div>
     <h1 style="
-        font-family: 'Roboto', sans-serif;
-        font-size: 2.8rem;
-        font-weight: 800;
-        color: #09090B;
-        margin-bottom: 6px;
-        letter-spacing: -0.8px;
-    ">💼 Experience Timeline</h1>
-    <p style="
-        font-family: 'Roboto', sans-serif;
-        color: #71717A;
-        font-size: 1rem;
-        font-weight: 300;
-        letter-spacing: 0.5px;
-    ">A journey through professional milestones</p>
-    <div style="
-        width: 60px;
-        height: 3px;
-        background: #FF5F1F;
-        border-radius: 2px;
-        margin: 12px auto 0;
-    "></div>
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 700;
+        color: #F8FAFC;
+        letter-spacing: -1px;
+        margin: 0 0 8px 0;
+        line-height: 1.1;
+    ">Experience Timeline</h1>
+    <p style="color: #64748B; font-size: 0.95rem; font-weight: 400; margin:0;">
+        A journey through professional milestones
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
 
-# -----------------------------
-# Load experience JSON
-# -----------------------------
+# ─── Load Data ─────────────────────────────────────
 data = JsonImporter.load_data_from_file("./data/experience.json")
-
 
 for exp in data:
 
-    # Build highlights list items
     highlights_html = ""
     for h in exp["highlights"]:
         highlights_html += f"""
-            <li style="
-                margin-bottom: 10px;
-                color: #27272A;
-                line-height: 1.75;
-                font-family: 'Roboto', sans-serif;
-                font-size: 0.93rem;
-            ">
-                <span style="
-                    font-family: 'Google Sans Code', monospace;
-                    color: #EA580C;
-                    font-weight: 600;
-                ">{h['title']}</span>
-                <span style="color: #FFEDD5;"> &mdash; </span>
-                {h['description']}
-            </li>
+        <div class="highlight-item">
+            <span class="highlight-title">{h['title']}</span>
+            <span style="color:#475569;">—</span>
+            <span>{h['description']}</span>
+        </div>
         """
 
-    # Build skill badges
-    skills_badges = ""
+    skills_html = ""
     for skill in exp["skills"]:
-        skills_badges += f"""
-            <span style="
-                display: inline-block;
-                background: #F4F4F5;
-                color: #18181B;
-                border: 1px solid #E4E4E7;
-                border-radius: 6px;
-                padding: 4px 14px;
-                margin: 4px 5px 4px 0;
-                font-size: 0.80rem;
-                font-weight: 500;
-                font-family: 'Roboto', sans-serif;
-                letter-spacing: 0.2px;
-            ">{skill}</span>
-        """
+        skills_html += f'<span class="skill-badge">{skill}</span>'
 
     st.html(f"""
-    <div style="
-        background: #FFFFFF;
-        border: 1px solid #E4E4E7;
-        border-radius: 8px;
-        margin-bottom: 24px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-    ">
-        <!-- Minimalist top banner -->
-        <div style="
-            background: #18181B;
-            padding: 18px 28px;
-        ">
-            <h2 style="
-                margin: 0 0 6px 0;
-                color: #FFFFFF;
-                font-size: 1.4rem;
-                font-weight: 700;
-                font-family: 'Roboto', sans-serif;
-                letter-spacing: -0.3px;
-            ">🏢 {exp['company']}</h2>
-            <span style="
-                display: inline-block;
-                background: #FFF7ED;
-                color: #EA580C;
-                border: 1px solid #FFEDD5;
-                border-radius: 6px;
-                padding: 2px 12px;
-                font-size: 0.85rem;
-                font-family: 'Roboto', sans-serif;
-                font-weight: 500;
-            ">{exp['role']}</span>
+    <div class="exp-card">
+        <div class="exp-card-header">
+            <div class="exp-company">🏢 {exp['company']}</div>
+            <span class="exp-role-badge">{exp['role']}</span>
         </div>
-
-        <!-- Card body -->
-        <div style="padding: 20px 28px 24px;">
-
-            <!-- Location & Duration -->
-            <p style="
-                color: #71717A;
-                font-size: 0.88rem;
-                margin-bottom: 18px;
-                font-family: 'Roboto', sans-serif;
-            ">
-                📍 <span style="color: #475569;">{exp['location']}</span>
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-                🗓️ <b style="color: #FF5F1F;">{exp['duration']['start']}</b>
-                &nbsp;→&nbsp;
-                <b style="color: #FF5F1F;">{exp['duration']['end']}</b>
-            </p>
-
-            <!-- Highlights -->
-            <div style="
-                background: #FAFAFA;
-                border: 1px solid #E4E4E7;
-                border-left: 3px solid #FF5F1F;
-                border-radius: 6px;
-                padding: 14px 18px 14px 20px;
-                margin-bottom: 18px;
-            ">
-                <p style="
-                    color: #FF5F1F;
-                    font-size: 0.72rem;
-                    text-transform: uppercase;
-                    letter-spacing: 1.5px;
-                    margin-bottom: 10px;
-                    font-weight: 700;
-                    font-family: 'Roboto', sans-serif;
-                ">✦ Highlights</p>
-                <ul style="margin: 0; padding-left: 18px;">
-                    {highlights_html}
-                </ul>
+        <div class="exp-card-body">
+            <div class="exp-meta">
+                <span class="exp-location">📍 {exp['location']}</span>
+                <div class="exp-divider"></div>
+                <span class="exp-dates">{exp['duration']['start']} → {exp['duration']['end']}</span>
             </div>
 
-            <!-- Skills -->
-            <p style="
-                color: #FF5F1F;
-                font-size: 0.72rem;
-                text-transform: uppercase;
-                letter-spacing: 1.5px;
-                margin-bottom: 10px;
-                font-weight: 700;
-                font-family: 'Roboto', sans-serif;
-            ">🛠 Tech Skills</p>
-            <div>{skills_badges}</div>
+            <div class="highlights-box">
+                <div class="highlights-label">✦ Highlights</div>
+                {highlights_html}
+            </div>
 
+            <div class="skills-label">🛠 Tech Stack</div>
+            <div>{skills_html}</div>
         </div>
     </div>
     """)
-
-    st.write("")  # spacing
