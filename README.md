@@ -1,5 +1,8 @@
 # 🗂️ Portfolio Creator Using Streamlit
 
+![About Me](aboutme.jpg)
+
+![Experience](experience.png)
 
 ![Portfolio Demo](Demo.gif)
 
@@ -208,6 +211,8 @@ Swap out `images/bolt.svg` with your own SVG or PNG file, then update the path i
 ```python
 st.logo("images/your_logo.svg")
 ```
+
+![Portfolio Demo](Demo.gif)
 
 ---
 
