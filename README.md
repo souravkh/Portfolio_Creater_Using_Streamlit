@@ -1,5 +1,8 @@
 # 🗂️ Portfolio Creator Using Streamlit
 
+
+![Portfolio Demo](Demo.gif)
+
 A clean, data-driven personal portfolio template built with **Streamlit**. All your personal information — about me, skills, experience, and projects — lives in a single JSON file, so you can update your portfolio without touching any Python code.
 
 ---
@@ -198,8 +201,6 @@ Replace this file with your own PDF, keeping the filename `resume.pdf`. The app 
 
 ---
 
----
-
 ## 🖼️ Replacing the Logo
 
 Swap out `images/bolt.svg` with your own SVG or PNG file, then update the path in `main.py`:
@@ -209,9 +210,6 @@ st.logo("images/your_logo.svg")
 ```
 
 ---
-
-![Portfolio Demo](Demo.gif)
-
 
 ## 🤝 Contributing
 

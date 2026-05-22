@@ -124,7 +124,7 @@ st.sidebar.markdown("""
 <div style="padding: 4px 0 12px 0;">
     <div style="
         font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         font-weight: 700;
         color: #F1F5F9 !important;
         letter-spacing: -0.4px;
