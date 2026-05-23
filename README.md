@@ -6,14 +6,14 @@
 
 ![Portfolio Demo](Demo.gif)
 
-A clean, data-driven personal portfolio template built with **Streamlit**. All your personal information — about me, skills, experience, and projects — lives in a single JSON file, so you can update your portfolio without touching any Python code.
+A clean, data-driven personal portfolio template built with **Streamlit**. All your personal information — about me, skills, experience, and projects — lives in a JSON file, so you can update your portfolio without touching any Python code.
 
 ---
 
 ## ✨ Features
 
 - Multi-page Streamlit app (About Me + Experience/Projects)
-- Fully customisable via JSON — no Python knowledge required to update content
+- Fully customisable via JSON — no Python knowledge required to update content (Use sample json with your resume and any chatbot to get your json )
 - Dev Container support for a one-click, reproducible development environment
 - Sidebar navigation with custom branding
 
