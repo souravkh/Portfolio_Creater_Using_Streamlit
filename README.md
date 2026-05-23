@@ -225,3 +225,5 @@ Contributions are welcome! Feel free to open an issue or submit a pull request f
 ## 📄 License
 
 This project is open source. See the repository for license details.
+
+Leave a ⭐ if this repo helped you!
